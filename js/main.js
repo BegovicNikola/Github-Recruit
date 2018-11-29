@@ -1,5 +1,17 @@
 $(document).ready(() => {
 
+    // Going to About Page
+    $('#about_me').click(function(){
+        const my_name = 'BegovicNikola';
+        render_user(my_name);
+        $('.nav-item').each(function(){
+            // Inner Scope
+            $(this).removeClass('active');
+        });
+        // Outer Scope
+        $(this).addClass('active');
+    });
+
     // Background auto-slideshow 
     let banner_holder = $('#banner_images');
     console.log(banner_holder);
@@ -97,7 +109,7 @@ $(document).ready(() => {
 
             // Adding Load More Results Button
             $('#pagination_holder').html(`
-                <button id="load_more" class="btn btn-lg btn-dark rounded-circle">
+                <button id="load_more" class="btn btn-lg btn-dark border border-white rounded-circle">
                     <span class="far fa-map"></span>
                 </button>`
             );
@@ -148,15 +160,19 @@ $(document).ready(() => {
                     $('#repos').append(
                         `<div class="list-group-item">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <h5>${repo.name}</h5>
+                                <div class="col-lg-7">
+                                    <h5>${++index}. ${repo.name}</h5>
                                     <p>${displayAttribute(repo.description)}</p>
                                 </div>
-                                <div class="col-lg-4 d-flex align-items-center">
-                                    ${repo.name}
+                                <div class="col-lg-3 d-flex align-items-center py-2">
+                                    <span class="badge badge-success p-1 mr-1">Forks: ${repo.forks_count}</span>
+                                    <span class="badge badge-primary p-1 mr-1">Watchers: ${repo.watchers_count}</span>
+                                    <span class="badge badge-info p-1">Stars: ${repo.stargazers_count}</span>
                                 </div>
                                 <div class="col-lg-2 d-flex align-items-center">
-                                    <a href="" class="btn btn-dark w-100">Repository</a>
+                                    <a href="${repo.html_url}" class="door btn btn-dark w-100">
+                                        Repository<span class="ml-2 fas fa-door-open text-white"></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>`
@@ -178,9 +194,8 @@ $(document).ready(() => {
                             <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-end">
                                     <h3 class="card-title mb-0 text-capitalize">${(user_data.name).toLowerCase()}</h3>
-                                    <span class="${hireable(user_data.hireable)} p-1"></span>
                                 </div>
-                                <a href="${user_data.html_url}" target="_blank" class="pt-2"><span id="door" class="fas fa-door-closed text-white"></span></a>
+                                <span class="${hireable(user_data.hireable)} pt-1"></span>
                             </div>
                             <div class="list-group list-group-flush">
                                 <p class="list-group-item">Email: ${displayAttribute(user_data.email)}</p>
@@ -189,18 +204,21 @@ $(document).ready(() => {
                                 <p class="list-group-item">Bio: ${displayAttribute(user_data.bio)}</p>
                                 <p class="list-group-item">Last Active: ${truncateDate(user_data.updated_at)}</p>
                                 <div class="list-group-item">
-                                    <span class="badge badge-success">Repos: ${user_data.public_repos}</span>
-                                    <span class="badge badge-primary">Gists: ${user_data.public_gists}</span>
-                                    <span class="badge badge-info">Followers: ${user_data.followers}</span>
+                                    <span class="badge badge-success p-1">Repos: ${user_data.public_repos}</span>
+                                    <span class="badge badge-primary p-1">Gists: ${user_data.public_gists}</span>
+                                    <span class="badge badge-info p-1">Followers: ${user_data.followers}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12">
-                        <a class="btn btn-dark text-white font-weight-bold w-100 mt-3">View More</a>
+                        <a href="${user_data.html_url}" target="_blank" class="btn btn-${hireable_viewmore(user_data.hireable)} text-white font-weight-bold w-100 mt-3">Go to Profile</a>
                     </div>
                     <div class="col-12 my-3">
                         <div class="card">
+                            <div class="card-header bg-dark text-white rounded-top">
+                                <h4 class="text-center text-capitalize">${get_name_only(user_data.name).toLowerCase()}'s Repositories</h4>
+                            </div>
                             <div id="repos" class="list-group list-group-flush"></div>
                         </div>
                     </div>
@@ -210,14 +228,9 @@ $(document).ready(() => {
             // Adding Result to Result Render Holder
             $('#content').html(html);
 
-            // Door Open and Close
-            $('#door').hover(() => {
-                $('#door').toggleClass('fa-door-closed').toggleClass('fa-door-open');
-            });
-
             // Adding Back To Home Button
             $('#pagination_holder').html(`
-                <a href="index.php" id="go_home" class="btn btn-lg btn-dark rounded-circle">
+                <a href="index.php" id="go_home" class="btn btn-lg btn-dark border border-${hireable_viewmore(user_data.hireable)} rounded-circle">
                     <span class="fas fa-home"></span>
                 </a>`
             );
@@ -239,12 +252,28 @@ $(document).ready(() => {
         return date_trunc = date_trunc.split('T')[0];
     }
 
+    // Checking if Developer is Hireable
     const hireable = hireable => {
         if(hireable){
             return 'fas fa-check-circle text-success';
         }else{
             return 'fas fa-times-circle text-danger';
         }
+    }
+
+    // Returning Color Depending on if hireable
+    const hireable_viewmore = hireable => {
+        if(hireable){
+            return 'success';
+        }else{
+            return 'danger';
+        }
+    }
+
+    // Truncating Full Name
+    const get_name_only = full_name => {
+        let res = full_name.split(' ');
+        return res[0];
     }
 
 });

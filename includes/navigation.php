@@ -9,8 +9,8 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">About</a>
+                <li id="about_me" class="nav-item">
+                    <span class="nav-link">About</span>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Features</a>
