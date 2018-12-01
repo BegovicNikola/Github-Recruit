@@ -1,4 +1,4 @@
-#about_me{
+#about_me, #next, #back{
     cursor: pointer;
 }
 /* Banner Styling -> Start */
@@ -58,9 +58,7 @@
 /* Content Grid Styling -> End */
 
 /* Content Single User Styling -> Start */
-.fa-door-open{
-    color: #333;
-}
+
 /* Content Single User Styling -> End */
 
 /* Buttons Styling -> Start */

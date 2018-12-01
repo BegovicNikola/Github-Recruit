@@ -145,40 +145,8 @@ $(document).ready(() => {
             }
         }).done(user_data => {
 
-            // Repository Ajax Call for the Current User
-            $.ajax({
-                url:`https://api.github.com/users/${user_name}/repos`,
-                data:{
-                    client_id:'71e24cf7dcf8b14c8713',
-                    client_secret:'4afda53eca11550c8cda6fc149f11b47badd0c56',
-                    sort: 'created: asc',
-                    per_page: 5
-                }
-            }).done(repos => {
-                console.log(repos);
-                $.each(repos, (index, repo) => {
-                    $('#repos').append(
-                        `<div class="list-group-item">
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <h5>${++index}. ${repo.name}</h5>
-                                    <p>${displayAttribute(repo.description)}</p>
-                                </div>
-                                <div class="col-lg-3 d-flex align-items-center py-2">
-                                    <span class="badge badge-success p-1 mr-1">Forks: ${repo.forks_count}</span>
-                                    <span class="badge badge-primary p-1 mr-1">Watchers: ${repo.watchers_count}</span>
-                                    <span class="badge badge-info p-1">Stars: ${repo.stargazers_count}</span>
-                                </div>
-                                <div class="col-lg-2 d-flex align-items-center">
-                                    <a href="${repo.html_url}" class="door btn btn-dark w-100">
-                                        Repository<span class="ml-2 fas fa-door-open text-white"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>`
-                    );
-                });
-            });
+            // Repository Ajax Call for Repos of the Current User
+            render_repos(user_name, current_page = 1);
 
             console.log(user_data);
             var html = '';
@@ -220,6 +188,11 @@ $(document).ready(() => {
                                 <h4 class="text-center text-capitalize">${get_name_only(user_data.name).toLowerCase()}'s Repositories</h4>
                             </div>
                             <div id="repos" class="list-group list-group-flush"></div>
+                            <div class="w-100 d-flex">
+                                <button id="back" class="col-5 btn btn-dark text-center text-white py-2 fas fa-chevron-left border-right"></button>
+                                <span id="current_page" class="col-2 d-flex justify-content-center align-items-center bg-dark text-white font-weight-bold">1</span>
+                                <button id="next" class="col-5 btn btn-dark text-center text-white py-2 fas fa-chevron-right border-left"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -235,6 +208,76 @@ $(document).ready(() => {
                 </a>`
             );
 
+            // Pagination Control
+            var current_page = 1;
+            $('#next').click(() => {
+                current_page++;
+                $('#back').prop("disabled", false).removeClass('btn-secondary').addClass('btn-dark');
+                render_repos(user_name, current_page);
+            });
+            $('#back').click(() => {
+                if(current_page >= 2){
+                    --current_page;
+                    $('#back').prop("disabled", false).removeClass('btn-secondary').addClass('btn-dark');
+                    render_repos(user_name, current_page);
+                }else{
+                    $('#back').prop("disabled", true).addClass('btn-secondary').removeClass('btn-dark');
+                }
+            });
+
+        });
+    }
+
+    // Ajax Function to Render User's Repositories
+    function render_repos(user_name, current_page = 1){
+        console.log(current_page);
+        $.ajax({
+            url:`https://api.github.com/users/${user_name}/repos`,
+            data:{
+                client_id:'71e24cf7dcf8b14c8713',
+                client_secret:'4afda53eca11550c8cda6fc149f11b47badd0c56',
+                sort: 'created: asc',
+                page: current_page,
+                per_page: 5
+            }
+        }).done(repos => {
+            console.log(repos);
+            var html = '';
+
+            // Checking if Next Page is Populated with Data
+            if(repos.length > 0){
+                repos.forEach(repo_item => {
+                    html += 
+                    `<div class="list-group-item">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <h5>${repo_item.name}</h5>
+                                <p>${displayAttribute(repo_item.description)}</p>
+                            </div>
+                            <div class="col-lg-3 d-flex align-items-center py-2">
+                                <span class="badge badge-success p-1 mr-1">Forks: ${repo_item.forks_count}</span>
+                                <span class="badge badge-primary p-1 mr-1">Watchers: ${repo_item.watchers_count}</span>
+                                <span class="badge badge-info p-1">Stars: ${repo_item.stargazers_count}</span>
+                            </div>
+                            <div class="col-lg-2 d-flex align-items-center">
+                                <a href="${repo_item.html_url}" class="door btn btn-dark w-100">
+                                    Repository<span class="ml-2 fas fa-door-open text-white"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+                // Adding Results of Repos to Render Holder
+                $('#repos').html(html);
+                // Enable Next Click
+                $('#next').prop("disabled", false).removeClass('btn-secondary').addClass('btn-dark');
+                // Displaying Current Page of Repos
+                $('#current_page').html(current_page);
+            }else{
+                // Disable Next Click
+                $('#next').prop("disabled", true).addClass('btn-secondary').removeClass('btn-dark');
+            }
+
         });
     }
 
@@ -249,7 +292,7 @@ $(document).ready(() => {
 
     // Truncate Date Values in Returned Object
     const truncateDate = date_trunc => {
-        return date_trunc = date_trunc.split('T')[0];
+        return date_trunc = date_trunc.replace('T', ' at ').replace('Z', '');
     }
 
     // Checking if Developer is Hireable
