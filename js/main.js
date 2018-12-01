@@ -1,7 +1,20 @@
 $(document).ready(() => {
 
+    // Going to Home Page
+    function navigate_home(){
+        render_users(user);
+        $('.nav-item').each(function(){
+            // Inner Scope
+            $(this).removeClass('active');
+        });
+        // Outer Scope
+        $(this).addClass('active');
+    }
+    $('#navigate_home').click(navigate_home);
+    $('#logo').click(navigate_home);
+
     // Going to About Page
-    $('#about_me').click(function(){
+    $('#navigate_about').click(function(){
         const my_name = 'BegovicNikola';
         render_user(my_name);
         $('.nav-item').each(function(){
@@ -203,10 +216,11 @@ $(document).ready(() => {
 
             // Adding Back To Home Button
             $('#pagination_holder').html(`
-                <a href="index.php" id="go_home" class="btn btn-lg btn-dark border border-${hireable_viewmore(user_data.hireable)} rounded-circle">
+                <button id="go_home" class="btn btn-lg btn-dark border border-${hireable_viewmore(user_data.hireable)} rounded-circle">
                     <span class="fas fa-home"></span>
-                </a>`
+                </button>`
             );
+            $('#go_home').click(navigate_home);
 
             // Pagination Control
             var current_page = 1;
