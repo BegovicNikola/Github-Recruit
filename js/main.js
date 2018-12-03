@@ -2,26 +2,39 @@ $(document).ready(() => {
 
     // Going to Home Page
     function navigate_home(){
+
+        $('html, body').animate({ scrollTop: 0 }, "slow");
+        ScrollReveal().clean('#content');
+        ScrollReveal().reveal('#content', { delay: 700, duration: 700 });
+
         render_users(user);
-        $('.nav-item').each(function(){
-            // Inner Scope
-            $(this).removeClass('active');
-        });
-        // Outer Scope
-        $(this).addClass('active');
+        $('.nav-item').removeClass('active');
+        $('#navigate_home').addClass('active');
     }
     $('#navigate_home').click(navigate_home);
     $('#logo').click(navigate_home);
 
     // Going to About Page
     $('#navigate_about').click(function(){
+
+        $('html, body').animate({ scrollTop: 0 }, "slow");
+        ScrollReveal().clean('#content');
+        ScrollReveal().reveal('#content', { delay: 700, duration: 700 });
+
         const my_name = 'BegovicNikola';
         render_user(my_name);
-        $('.nav-item').each(function(){
-            // Inner Scope
-            $(this).removeClass('active');
-        });
-        // Outer Scope
+        $('.nav-item').removeClass('active');
+        $(this).addClass('active');
+    });
+    // Going to Features Page
+    $('#navigate_features').click(function(){
+
+        $('html, body').animate({ scrollTop: 0 }, "slow");
+        ScrollReveal().clean('#content');
+        ScrollReveal().reveal('#content', { delay: 700, duration: 700 });
+
+        render_features();
+        $('.nav-item').removeClass('active');
         $(this).addClass('active');
     });
 
@@ -51,6 +64,7 @@ $(document).ready(() => {
     let srcInput = $('#search');
 
     // Ajax on Page Load
+    ScrollReveal().reveal('#content', { delay: 700, duration: 700 });
     render_users(user);
 
     // Search for Users Function
@@ -135,11 +149,14 @@ $(document).ready(() => {
 
             // Replacing Render of Users with a Single User on Click
             var user_name = '';
-            $('.content_item').each(function(){
-                $(this).click(() => {
-                    user_name = $(this).data("username");
-                    render_user(user_name);
-                });
+            $('.content_item').click(function(e){
+
+                $('html, body').animate({ scrollTop: 0 }, "slow");
+                ScrollReveal().clean('#content');
+                ScrollReveal().reveal('#content', { duration: 700 });
+
+                user_name = e.currentTarget.attributes[1].value;
+                render_user(user_name);
             });
 
         });
@@ -147,8 +164,7 @@ $(document).ready(() => {
     }
 
     // Ajax Function for Rendering Single User
-    function render_user(user_name){
-
+    const render_user = (user_name) => {
         // Main Ajax Call for Rendering a Single User
         $.ajax({
             url: `https://api.github.com/users/${user_name}`,
@@ -243,8 +259,7 @@ $(document).ready(() => {
     }
 
     // Ajax Function to Render User's Repositories
-    function render_repos(user_name, current_page = 1){
-        console.log(current_page);
+    const render_repos = (user_name, current_page = 1) => {
         $.ajax({
             url:`https://api.github.com/users/${user_name}/repos`,
             data:{
@@ -274,7 +289,7 @@ $(document).ready(() => {
                                 <span class="badge badge-info p-1">Stars: ${repo_item.stargazers_count}</span>
                             </div>
                             <div class="col-lg-2 d-flex align-items-center">
-                                <a href="${repo_item.html_url}" class="door btn btn-dark w-100">
+                                <a href="${repo_item.html_url}" target="_blank"class="door btn btn-dark w-100">
                                     Repository<span class="ml-2 fas fa-door-open text-white"></span>
                                 </a>
                             </div>
@@ -331,6 +346,129 @@ $(document).ready(() => {
     const get_name_only = full_name => {
         let res = full_name.split(' ');
         return res[0];
+    }
+
+    // Function to Render Features
+    const render_features = () => {
+
+        $('#content').html(`
+            <div class="col-12">
+
+                <h1 class="text-center">Github Recruit Features</h1>
+                <div class="container">
+                    <button id="docs" class="w-100 btn btn-success">Documentation</button>
+                </div>
+                
+                <div class="mt-5 w-100 d-flex flex-column justify-content-between">
+
+                    <div class="w-100 d-flex flex-wrap justify-content-between align-items-stretch">
+                        <div class="col-lg-4">
+                            <img class="w-100 h-100 rounded border" src="images/scrollreveal.gif" alt="Scroll Reveal Showcase"/>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white rounded-top">
+                                    <h4 class="text-center text-capitalize">ScrollReveal.js</h4>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <code class="text-secondary">Source URL: "https://unpkg.com/scrollreveal";</code><br/>
+                                        <code class="text-secondary">Example: ScrollReveal().reveal('#example', { delay: 500, duration: 500 });</code>
+                                    </div>
+                                    <div class="list-group-item d-flex flex-wrap">
+                                        <img class="col-md-6" src="images/scrollreveal.png" alt="Scroll Reveal Display"/>
+                                        <div class="col-md-6">
+                                            <p><strong>ScrollReveal</strong> is a JavaScript library for easily animating elements as they enter/leave the viewport. It was designed to be robust and flexible, but hopefully you’ll be surprised below at how easy it is to pick up.</p>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white rounded-top">
+                                    <h4 class="text-center text-capitalize">Github API</h4>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <code class="text-secondary">Getting Data: GET /search/users</code><br/>
+                                        <code class="text-secondary">Endpoint: https://api.github.com/search/users?q=user</code>
+                                    </div>
+                                    <div class="list-group-item d-flex flex-wrap align-items-start">
+                                        <img class="col-md-3 rounded border" src="images/github.jpg" alt="Scroll Reveal Display"/>
+                                        <div class="col-md-9">
+                                            <p><strong>GitHub Inc.</strong> is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.<br/><strong>Using the API:</strong><br/>By default, all requests to <code class="text-secondary">https://api.github.com</code> receive the v3 version of the REST API.</p>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="col-md-3 my-1">
+                            <img class="w-100 rounded" src="images/gitoriginal.png" alt="Git Logo"/>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white rounded-top">
+                                    <h4 class="text-center text-capitalize">Git - Version Control</h4>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <code class="text-secondary">Initiate: git init</code><br/>
+                                        <code class="text-secondary">Commit: git commit -m "Example Commit"</code>
+                                    </div>
+                                    <div class="list-group-item d-flex">
+                                        <p>Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git is easy to learn and has a tiny footprint with lightning fast performance.</p>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                        <div class="col-md-3 my-1">
+                            <img class="w-100 rounded" src="images/gitwindows.png" alt="Git Windows Logo"/>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white rounded-top">
+                                    <h4 class="text-center text-capitalize">ECMA Script 6</h4>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <code class="text-secondary">Constants & Block Scope Variables: const / let</code><br/>
+                                        <code class="text-secondary">Arrow Functons: () => { ...code }</code>
+                                    </div>
+                                    <div class="list-group-item d-flex flex-wrap align-items-start">
+                                        <img class="col-md-3 rounded" src="images/es6.jpeg" alt="Scroll Reveal Display"/>
+                                        <div class="col-md-9">
+                                            <p>ECMAScript or ES is a trademarked scripting-language specification standardized by Ecma International in ECMA-262 and ISO/IEC 16262. It was created to standardize JavaScript, so as to foster multiple independent implementations. JavaScript has remained the best-known implementation of ECMAScript since the standard was first published, with other well-known implementations including JScript and ActionScript. ECMAScript is commonly used for client-side scripting on the World Wide Web, and it is increasingly being used for writing server applications and services using Node.js.</p>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        `);
+
+        $('#docs').click(() => {
+            $.MessageBox(`
+                <div class="d-flex flex-column justify-content-center text-center">
+                    <p>Click download to get the documentation from <code>docs.pdf</code></p>
+                    <a class="btn btn-success" href="files/docs.pdf" download>Download</a>
+                </div>
+            `);
+        });
+
     }
 
 });
