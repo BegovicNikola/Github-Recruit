@@ -398,7 +398,7 @@ $(document).ready(() => {
                                         <code class="text-secondary">Endpoint: https://api.github.com/search/users?q=user</code>
                                     </div>
                                     <div class="list-group-item d-flex flex-wrap align-items-start">
-                                        <img class="col-md-3 rounded border" src="images/github.jpg" alt="Scroll Reveal Display"/>
+                                        <img class="col-md-3 rounded" src="images/github.jpg" alt="Scroll Reveal Display"/>
                                         <div class="col-md-9">
                                             <p><strong>GitHub Inc.</strong> is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.<br/><strong>Using the API:</strong><br/>By default, all requests to <code class="text-secondary">https://api.github.com</code> receive the v3 version of the REST API.</p>
                                         </div>
@@ -447,11 +447,55 @@ $(document).ready(() => {
                                     <div class="list-group-item d-flex flex-wrap align-items-start">
                                         <img class="col-md-3 rounded" src="images/es6.jpeg" alt="Scroll Reveal Display"/>
                                         <div class="col-md-9">
-                                            <p>ECMAScript or ES is a trademarked scripting-language specification standardized by Ecma International in ECMA-262 and ISO/IEC 16262. It was created to standardize JavaScript, so as to foster multiple independent implementations. JavaScript has remained the best-known implementation of ECMAScript since the standard was first published, with other well-known implementations including JScript and ActionScript. ECMAScript is commonly used for client-side scripting on the World Wide Web, and it is increasingly being used for writing server applications and services using Node.js.</p>
+                                            <p><strong>ECMAScript</strong> or ES is a trademarked scripting-language specification standardized by Ecma International. It was created to standardize JavaScript, so as to foster multiple independent implementations. JavaScript has remained the best-known implementation of ECMAScript. ECMAScript is commonly used for client-side scripting, and it is increasingly being used for writing applications and services using Node.js.</p>
                                         </div>
                                     </div>
                                 </div>   
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-between">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white rounded-top">
+                                    <h4 class="text-center">jQuery - v3.3.1</h4>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <code class="text-secondary">CDN: "https://code.jquery.com/jquery-3.3.1.min.js";</code><br/>
+                                        <code class="text-secondary">Example: $('example').click(function{ ...code });</code>
+                                    </div>
+                                    <div class="list-group-item d-flex flex-wrap">
+                                        <p><strong>jQuery</strong> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</p>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <img class="w-100 h-100 rounded" src="images/jquery.png" alt="Scroll Reveal Showcase"/>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-between">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header bg-dark text-white rounded-top">
+                                    <h4 class="text-center">Bootstrap - v4.1.3</h4>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <code class="text-secondary">CDN Js: "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js";</code><br/>
+                                        <code class="text-secondary">CDN Css: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";</code>
+                                    </div>
+                                    <div class="list-group-item d-flex flex-wrap">
+                                        <p>Build responsive, mobile-first projects on the web with the world's most popular front-end component library. Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <img class="w-100 h-100 rounded" src="images/bootstrap.png" alt="Scroll Reveal Showcase"/>
                         </div>
                     </div>
 
@@ -460,6 +504,15 @@ $(document).ready(() => {
             </div>
         `);
 
+        // Adding Back To Home Button
+        $('#pagination_holder').html(`
+            <button id="go_home" class="btn btn-lg btn-dark border border-success rounded-circle">
+                <span class="fas fa-home"></span>
+            </button>`
+        );
+        $('#go_home').click(navigate_home);
+
+        // Plugin Modal for Document Download
         $('#docs').click(() => {
             $.MessageBox(`
                 <div class="d-flex flex-column justify-content-center text-center">
