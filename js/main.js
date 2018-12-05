@@ -41,7 +41,7 @@ $(document).ready(() => {
     // Background auto-slideshow 
     let banner_holder = $('#banner_images');
     console.log(banner_holder);
-    const banner_images = ['images/banner1.jpg', 'images/banner2.jpg'];
+    const banner_images = ['images/banner1.jpg', 'images/banner3.jpg','images/banner2.jpg', 'images/banner3.jpg'];
     let curr = 1;
     const auto_slide = () => {
         banner_holder.fadeOut(800, function () {
@@ -153,7 +153,7 @@ $(document).ready(() => {
 
                 $('html, body').animate({ scrollTop: 0 }, "slow");
                 ScrollReveal().clean('#content');
-                ScrollReveal().reveal('#content', { duration: 700 });
+                ScrollReveal().reveal('#content', { delay: 700, duration: 700 });
 
                 user_name = e.currentTarget.attributes[1].value;
                 render_user(user_name);
@@ -354,9 +354,9 @@ $(document).ready(() => {
         // Populating Content Holder with Features
         $('#content').html(`
             <div class="col-12">
-                <h1 id="features_title" class="text-center">Github Recruit Features</h1>
+                <h1 id="features_title" class="text-center font-weight-bold">Github Recruit Features</h1>
                 <div class="container">
-                    <button id="docs" class="w-100 btn btn-success">Documentation</button>
+                    <button id="docs" class="w-100 btn btn-success font-weight-bold">Documentation</button>
                 </div>
                 <div class="mt-5 w-100 d-flex flex-column justify-content-between">
                 <!-- ScrollReveal.js Feature -->
@@ -367,7 +367,7 @@ $(document).ready(() => {
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
-                                    <h4 class="text-center text-capitalize">ScrollReveal.js</h4>
+                                    <h4 class="text-center text-capitalize font-weight-bold mb-0">ScrollReveal.js</h4>
                                 </div>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -389,7 +389,7 @@ $(document).ready(() => {
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
-                                    <h4 class="text-center text-capitalize">Github API</h4>
+                                    <h4 class="text-center text-capitalize font-weight-bold mb-0">Github API</h4>
                                 </div>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -414,7 +414,7 @@ $(document).ready(() => {
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
-                                    <h4 class="text-center text-capitalize">Git - Version Control</h4>
+                                    <h4 class="text-center text-capitalize font-weight-bold mb-0">Git - Version Control</h4>
                                 </div>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -436,7 +436,7 @@ $(document).ready(() => {
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
-                                    <h4 class="text-center text-capitalize">ECMA Script 6</h4>
+                                    <h4 class="text-center text-capitalize font-weight-bold mb-0">ECMA Script 6</h4>
                                 </div>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -458,7 +458,7 @@ $(document).ready(() => {
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
-                                    <h4 class="text-center">jQuery - v3.3.1</h4>
+                                    <h4 class="text-center font-weight-bold mb-0">jQuery - v3.3.1</h4>
                                 </div>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -480,7 +480,7 @@ $(document).ready(() => {
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
-                                    <h4 class="text-center">Bootstrap - v4.1.3</h4>
+                                    <h4 class="text-center font-weight-bold mb-0">Bootstrap - v4.1.3</h4>
                                 </div>
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
@@ -488,7 +488,7 @@ $(document).ready(() => {
                                         <code class="text-secondary">CDN Css: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";</code>
                                     </div>
                                     <div class="list-group-item d-flex flex-wrap">
-                                        <p>Build responsive, mobile-first projects on the web with the world's most popular front-end component library. Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
+                                        <p>Build responsive, mobile-first projects on the web with the world's most popular front-end component library. <strong>Bootstrap</strong> is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.</p>
                                     </div>
                                 </div>   
                             </div>
@@ -503,7 +503,7 @@ $(document).ready(() => {
 
         // Adding Back To Home Button
         $('#pagination_holder').html(`
-            <button id="go_home" class="btn btn-lg btn-dark border border-success rounded-circle">
+            <button id="go_home" class="btn btn-lg btn-dark border border-white rounded-circle">
                 <span class="fas fa-home"></span>
             </button>`
         );
@@ -519,6 +519,7 @@ $(document).ready(() => {
             `);
         });
 
+        // Scroll Reveal Effects for Featured Items
         ScrollReveal().clean('#docs');
         ScrollReveal().reveal('#docs', { delay: 1400, duration: 700, origin: 'top', distance: '300px' });
         ScrollReveal().clean('#scrollreveal_feature');
@@ -528,7 +529,13 @@ $(document).ready(() => {
         ScrollReveal().clean('#git_feature .col-md-3');
         ScrollReveal().reveal('#git_feature .col-md-3', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
         ScrollReveal().clean('#git_feature .col-md-6');
-        ScrollReveal().reveal('#git_feature .col-md-6', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
+        ScrollReveal().reveal('#git_feature .col-md-6', { delay: 600, duration: 700, origin: 'top', distance: '100px'});
+        ScrollReveal().clean('#ecma_feature');
+        ScrollReveal().reveal('#ecma_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
+        ScrollReveal().clean('#bootstrap_feature');
+        ScrollReveal().reveal('#bootstrap_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
+        ScrollReveal().clean('#jquery_feature');
+        ScrollReveal().reveal('#jquery_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
     }
 
 });

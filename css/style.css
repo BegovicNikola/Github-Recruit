@@ -1,12 +1,11 @@
-#logo, #navigate_home, #navigate_about, #navigate_features, #next, #back{
-  cursor: pointer;
-}
 /* Banner Styling -> Start */
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
 #banner_holder{
   height: 320px;
   width: 100%;
 }
-
 #banner_images{
   background-image: url('../images/banner1.jpg');
   background-size: cover;
@@ -15,19 +14,19 @@
   height: 320px;
   width: 100%;
 }
-
 #banner_overlay{
   background-color: rgba(255, 153, 0, 0.88);
   height: 320px;
   width: 100%;
 }
-
 #search{
   background-color: rgba(255, 255, 255, 0.9);
 }
-
 #warning{
   color: transparent;
+}
+#logo, #navigate_home, #navigate_about, #navigate_features, #next, #back{
+  cursor: pointer;
 }
 /* Banner Styling -> End */
 
@@ -35,31 +34,23 @@
 .content_item{
   cursor: pointer;
 }
-
 .content_item img{
   -moz-transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
-
 .content_item:hover img{
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
 .card_img_holder{
   overflow: hidden;
 }
-
 .card-body span{
   font-size: 1.5em;
 }
 /* Content Grid Styling -> End */
-
-/* Content Single User Styling -> Start */
-
-/* Content Single User Styling -> End */
 
 /* Buttons Styling -> Start */
 #go_home, #load_more{
@@ -67,9 +58,7 @@
   bottom: 20px;
   left: 20px;
   z-index: 999;
-  /* box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9); */
 }
-
 /* Back To Home Animation */
 @-webkit-keyframes pulse{
   0% { transform: scale(1); }
@@ -89,7 +78,6 @@
   -webkit-animation: pulse 2s infinite linear;
   animation: pulse 2s infinite linear;
 }
-
 /* Load More Users Animation */
 #load_more:hover .fa-arrow-down{
   -webkit-animation: pulse 2s infinite linear;
