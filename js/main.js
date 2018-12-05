@@ -351,17 +351,16 @@ $(document).ready(() => {
     // Function to Render Features
     const render_features = () => {
 
+        // Populating Content Holder with Features
         $('#content').html(`
             <div class="col-12">
-
-                <h1 class="text-center">Github Recruit Features</h1>
+                <h1 id="features_title" class="text-center">Github Recruit Features</h1>
                 <div class="container">
                     <button id="docs" class="w-100 btn btn-success">Documentation</button>
                 </div>
-                
                 <div class="mt-5 w-100 d-flex flex-column justify-content-between">
-
-                    <div class="w-100 d-flex flex-wrap justify-content-between align-items-stretch">
+                <!-- ScrollReveal.js Feature -->
+                    <div id="scrollreveal_feature" class="w-100 d-flex flex-wrap justify-content-between align-items-stretch">
                         <div class="col-lg-4">
                             <img class="w-100 h-100 rounded border" src="images/scrollreveal.gif" alt="Scroll Reveal Showcase"/>
                         </div>
@@ -385,8 +384,8 @@ $(document).ready(() => {
                             </div>
                         </div>
                     </div>
-
-                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
+                <!-- Github API Feature -->
+                    <div id="github_feature" class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
@@ -407,8 +406,8 @@ $(document).ready(() => {
                             </div>
                         </div>
                     </div>
-
-                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
+                <!-- Git Feature -->
+                    <div id="git_feature" class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="col-md-3 my-1">
                             <img class="w-100 rounded" src="images/gitoriginal.png" alt="Git Logo"/>
                         </div>
@@ -432,8 +431,8 @@ $(document).ready(() => {
                             <img class="w-100 rounded" src="images/gitwindows.png" alt="Git Windows Logo"/>
                         </div>
                     </div>
-
-                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
+                <!-- ECMA Script 6 Feature -->
+                    <div id="ecma_feature" class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
@@ -454,8 +453,8 @@ $(document).ready(() => {
                             </div>
                         </div>
                     </div>
-
-                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-between">
+                <!-- jQuery Feature -->
+                    <div id="jquery_feature" class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-between">
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
@@ -476,8 +475,8 @@ $(document).ready(() => {
                             <img class="w-100 h-100 rounded" src="images/jquery.png" alt="Scroll Reveal Showcase"/>
                         </div>
                     </div>
-
-                    <div class="mt-5 w-100 d-flex flex-wrap justify-content-between align-items-between">
+                <!-- Bootstrap Feature -->
+                    <div id="bootstrap_feature" class="my-5 w-100 d-flex flex-wrap justify-content-between align-items-between">
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="card-header bg-dark text-white rounded-top">
@@ -498,9 +497,7 @@ $(document).ready(() => {
                             <img class="w-100 h-100 rounded" src="images/bootstrap.png" alt="Scroll Reveal Showcase"/>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         `);
 
@@ -516,12 +513,22 @@ $(document).ready(() => {
         $('#docs').click(() => {
             $.MessageBox(`
                 <div class="d-flex flex-column justify-content-center text-center">
-                    <p>Click download to get the documentation from <code>docs.pdf</code></p>
+                    <p>Click download to get the documentation from <code class="text-danger">docs.pdf</code></p>
                     <a class="btn btn-success" href="files/docs.pdf" download>Download</a>
                 </div>
             `);
         });
 
+        ScrollReveal().clean('#docs');
+        ScrollReveal().reveal('#docs', { delay: 1400, duration: 700, origin: 'top', distance: '300px' });
+        ScrollReveal().clean('#scrollreveal_feature');
+        ScrollReveal().reveal('#scrollreveal_feature', { delay: 2100, duration: 700, origin: 'top', distance: '300px' });
+        ScrollReveal().clean('#github_feature');
+        ScrollReveal().reveal('#github_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px' });
+        ScrollReveal().clean('#git_feature .col-md-3');
+        ScrollReveal().reveal('#git_feature .col-md-3', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
+        ScrollReveal().clean('#git_feature .col-md-6');
+        ScrollReveal().reveal('#git_feature .col-md-6', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
     }
 
 });
