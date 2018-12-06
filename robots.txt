@@ -1,4 +1,4 @@
 User-agent:*
 Disallow:/*?
 
-Sitemap: http://www.github-recruit.epizy.com//sitemap.xml
+Sitemap: https://begovicnikola.github.io/Github-Recruit/sitemap.xml
