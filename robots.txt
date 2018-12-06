@@ -1,4 +1,4 @@
 User-agent:*
 Disallow:/*?
 
-Sitemap: http://www.googlehome.epizy.com/sitemap.xml
+Sitemap: http://www.github-recruit.epizy.com//sitemap.xml

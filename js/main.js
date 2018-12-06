@@ -280,7 +280,7 @@ $(document).ready(() => {
                     `<div class="list-group-item">
                         <div class="row">
                             <div class="col-lg-7">
-                                <h5>${repo_item.name}</h5>
+                                <h5 class="font-weight-bold">${repo_item.name}</h5>
                                 <p>${displayAttribute(repo_item.description)}</p>
                             </div>
                             <div class="col-lg-3 d-flex align-items-center py-2">
@@ -354,7 +354,7 @@ $(document).ready(() => {
         // Populating Content Holder with Features
         $('#content').html(`
             <div class="col-12">
-                <h1 id="features_title" class="text-center font-weight-bold">Github Recruit Features</h1>
+                <h2 id="features_title" class="text-center font-weight-bold">Github Recruit Features</h1>
                 <div class="container">
                     <button id="docs" class="w-100 btn btn-success font-weight-bold">Documentation</button>
                 </div>
@@ -397,7 +397,7 @@ $(document).ready(() => {
                                         <code class="text-secondary">Endpoint: https://api.github.com/search/users?q=user</code>
                                     </div>
                                     <div class="list-group-item d-flex flex-wrap align-items-start">
-                                        <img class="col-md-3 rounded" src="images/github.jpg" alt="Scroll Reveal Display"/>
+                                        <img class="col-md-3 rounded" src="images/github.jpg" alt="Github Logo"/>
                                         <div class="col-md-9">
                                             <p><strong>GitHub Inc.</strong> is a web-based hosting service for version control using Git. It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features. It provides access control and several collaboration features such as bug tracking, feature requests, task management, and wikis for every project.<br/><strong>Using the API:</strong><br/>By default, all requests to <code class="text-secondary">https://api.github.com</code> receive the v3 version of the REST API.</p>
                                         </div>
@@ -441,10 +441,10 @@ $(document).ready(() => {
                                 <div class="list-group list-group-flush">
                                     <div class="list-group-item">
                                         <code class="text-secondary">Constants & Block Scope Variables: const / let</code><br/>
-                                        <code class="text-secondary">Arrow Functons: () => { ...code }</code>
+                                        <code class="text-secondary">Arrow Functions: () => { ...code }</code>
                                     </div>
                                     <div class="list-group-item d-flex flex-wrap align-items-start">
-                                        <img class="col-md-3 rounded" src="images/es6.jpeg" alt="Scroll Reveal Display"/>
+                                        <img class="col-md-3 rounded" src="images/es6.jpeg" alt="ES6 Logo"/>
                                         <div class="col-md-9">
                                             <p><strong>ECMAScript</strong> or ES is a trademarked scripting-language specification standardized by Ecma International. It was created to standardize JavaScript, so as to foster multiple independent implementations. JavaScript has remained the best-known implementation of ECMAScript. ECMAScript is commonly used for client-side scripting, and it is increasingly being used for writing applications and services using Node.js.</p>
                                         </div>
