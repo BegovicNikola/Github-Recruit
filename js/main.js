@@ -514,7 +514,7 @@ $(document).ready(() => {
             $.MessageBox(`
                 <div class="d-flex flex-column justify-content-center text-center">
                     <p>Click download to get the documentation from <code class="text-danger">docs.pdf</code></p>
-                    <a class="btn btn-success" href="files/docs.pdf" download>Download</a>
+                    <a class="btn btn-success" href="files/docs.pdf" download>Download<span class="ml-1 fas fa-cloud-download-alt"></a>
                 </div>
             `);
         });

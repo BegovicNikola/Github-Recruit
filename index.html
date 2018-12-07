@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- UTF-8 Charset Enabled -->
     <meta charset="UTF-8">
+    <!-- Intial Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IE Compatibility -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Page Title -->
     <title>Github App</title>
     <!-- Description -->
-    <meta name="description" content="SpaceX designs and manufactures rockets and spacecraft. The company revolutionized
-    space technology, without costly launches of orbiting satellites with most successful project falcon heavy."/>
+    <meta name="description" content="Github Recruit is a recruiting web app, dedicated to connecting developers in the field of computer science and programming. Create a Github profile and join our network of talented professionals to get discovered by companies."/>
     <!-- Keywords -->
-    <meta name="keywords" content="SpaceX, space, falcon, rocket, design "/>
+    <meta name="keywords" content="Github, recruit, repository, developers, offers"/>
     <!-- Favicon -->
 	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
     <!-- Bootstrap Minified Css -->
@@ -28,10 +31,13 @@
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+            <!-- Logo -->
             <span id="logo" class="navbar-brand font-weight-bold">Github Recruit</span>
+            <!-- Mobile Toggle Navigation Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Navigation Items Collapsed on Mobile -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li id="navigate_home" class="nav-item active">
@@ -50,11 +56,13 @@
 
     <!-- Banner -->
     <div id="banner_holder" class="position-relative mb-4">
+        <!-- Slideshow Images -->
         <div id="banner_images" class="position-absolute"></div>
+        <!-- Search and Title -->
         <div id="banner_overlay" class="position-absolute d-flex align-items-end justify-content-center">
             <div class="container text-center mb-5">
                 <h1 class="font-weight-bold">Find Recruits</h1>
-                <p>Github Recruit Offers a vast pool of developers to choose from. Find developers using their online portfolio which is Github.</p>
+                <p class="font-weight-bold">Github Recruit Offers a vast pool of developers to choose from. Find developers using their online portfolio which is Github.</p>
                 <input id="search" class="form-control" type="text" placeholder="Search for developers..."/>
                 <code id="warning">Invalid user parameter use letters only*</code>
             </div>
@@ -63,8 +71,14 @@
 
     <!-- Content -->
     <div class="container">
-        <div id="content" class="row"><!-- Content Rendered Here --></div>
-        <div id="pagination_holder"><!-- Navigation Buttons Rendered Here --></div>
+        <!-- Data Rendered Content -->
+        <div id="content" class="row">
+            <!-- Content Rendered Here -->
+        </div>
+        <!-- Navigation Help Buttons -->
+        <div id="pagination_holder">
+            <!-- Navigation Buttons Rendered Here -->
+        </div>
     </div>
 
     <!-- jQuery Minified  -->
