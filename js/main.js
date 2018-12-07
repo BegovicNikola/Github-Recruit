@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     // Going to Home Page
-    function navigate_home(){
+    const navigate_home = () => {
 
         $('html, body').animate({ scrollTop: 0 }, "slow");
         ScrollReveal().clean('#content');
