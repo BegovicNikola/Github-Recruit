@@ -121,7 +121,7 @@ $(document).ready(() => {
                             <img class="card-img-top" src="${user_item.avatar_url}" alt="User Avatar ${user_item.login}">
                         </div>
                         <div class="card-body rounded-bottom d-flex justify-content-between align-items-center bg-dark text-white">
-                            <h3 class="mb-0 font-weight-bolder">${user_item.login}</h3>
+                            <h3 class="mb-0">${user_item.login}</h3>
                             <div>
                                 <span class="fab fa-github"></span>
                                 <span>${Math.round(user_item.score)}</span>
