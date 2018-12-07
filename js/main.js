@@ -40,7 +40,6 @@ $(document).ready(() => {
 
     // Background auto-slideshow 
     let banner_holder = $('#banner_images');
-    console.log(banner_holder);
     const banner_images = ['images/banner1.jpg', 'images/banner3.jpg','images/banner2.jpg', 'images/banner3.jpg'];
     let curr = 1;
     const auto_slide = () => {
@@ -110,7 +109,7 @@ $(document).ready(() => {
         }).done(user_data => {
             // Getting Array of Users Only
             var user_data = user_data.items;
-            console.log(user_data, page, per_page);
+
             var html = '';
 
             user_data.forEach(user_item => {
@@ -177,7 +176,6 @@ $(document).ready(() => {
             // Repository Ajax Call for Repos of the Current User
             render_repos(user_name, current_page = 1);
 
-            console.log(user_data);
             var html = '';
             
             html += 
@@ -272,7 +270,7 @@ $(document).ready(() => {
                 per_page: 5
             }
         }).done(repos => {
-            console.log(repos);
+
             var html = '';
 
             // Checking if Next Page is Populated with Data
