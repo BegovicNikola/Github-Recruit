@@ -474,7 +474,7 @@ $(document).ready(() => {
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <img class="w-100 h-100 rounded" src="images/jquery.png" alt="Scroll Reveal Showcase"/>
+                            <img class="w-100 h-100 rounded" src="images/jquery.png" alt="jQuery Slogan"/>
                         </div>
                     </div>
                 <!-- Bootstrap Feature -->
@@ -496,7 +496,7 @@ $(document).ready(() => {
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <img class="w-100 h-100 rounded" src="images/bootstrap.png" alt="Scroll Reveal Showcase"/>
+                            <img class="w-100 h-100 rounded" src="images/bootstrap.png" alt="Bootstrap Logo"/>
                         </div>
                     </div>
                 </div>
