@@ -209,7 +209,9 @@ $(document).ready(() => {
                         </div>
                     </div>
                     <div class="col-12">
-                        <a href="${user_data.html_url}" target="_blank" class="btn btn-${hireable_viewmore(user_data.hireable)} text-white font-weight-bold w-100 mt-3">Go to Profile</a>
+                        <a href="${user_data.html_url}" target="_blank" class="btn btn-${hireable_viewmore(user_data.hireable)} text-white font-weight-bold w-100 mt-3">
+                            Go to Profile<span class="ml-2 fas fa-door-open text-white"></span>
+                        </a>
                     </div>
                     <div class="col-12 my-3">
                         <div class="card">
@@ -522,8 +524,10 @@ $(document).ready(() => {
         // Scroll Reveal Effects for Featured Items
         ScrollReveal().clean('#docs');
         ScrollReveal().reveal('#docs', { delay: 1400, duration: 700, origin: 'top', distance: '300px' });
-        ScrollReveal().clean('#scrollreveal_feature');
-        ScrollReveal().reveal('#scrollreveal_feature', { delay: 2100, duration: 700, origin: 'top', distance: '300px' });
+        ScrollReveal().clean('#scrollreveal_feature .col-lg-8');
+        ScrollReveal().reveal('#scrollreveal_feature .col-lg-8', { delay: 1800, duration: 700, origin: 'top', distance: '100px' });
+        ScrollReveal().clean('#scrollreveal_feature .col-lg-4');
+        ScrollReveal().reveal('#scrollreveal_feature .col-lg-4', { delay: 2100, duration: 700, origin: 'top', distance: '300px' });
         ScrollReveal().clean('#github_feature');
         ScrollReveal().reveal('#github_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px' });
         ScrollReveal().clean('#git_feature .col-md-3');
@@ -532,10 +536,14 @@ $(document).ready(() => {
         ScrollReveal().reveal('#git_feature .col-md-6', { delay: 600, duration: 700, origin: 'top', distance: '100px'});
         ScrollReveal().clean('#ecma_feature');
         ScrollReveal().reveal('#ecma_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
-        ScrollReveal().clean('#bootstrap_feature');
-        ScrollReveal().reveal('#bootstrap_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
-        ScrollReveal().clean('#jquery_feature');
-        ScrollReveal().reveal('#jquery_feature', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
+        ScrollReveal().clean('#bootstrap_feature .col-lg-8');
+        ScrollReveal().reveal('#bootstrap_feature .col-lg-8', { delay: 600, duration: 700, origin: 'top', distance: '100px'});
+        ScrollReveal().clean('#bootstrap_feature .col-lg-4');
+        ScrollReveal().reveal('#bootstrap_feature .col-lg-4', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
+        ScrollReveal().clean('#jquery_feature .col-lg-8');
+        ScrollReveal().reveal('#jquery_feature .col-lg-8', { delay: 600, duration: 700, origin: 'top', distance: '100px'});
+        ScrollReveal().clean('#jquery_feature .col-lg-4');
+        ScrollReveal().reveal('#jquery_feature .col-lg-4', { delay: 600, duration: 700, origin: 'top', distance: '300px'});
     }
 
 });
